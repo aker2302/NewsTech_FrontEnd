@@ -1,0 +1,8 @@
+<div id="blurred-overlay" class="blurred-overlay hidden"></div>
+<div class="subscribe-button-container">
+    <button (click)="toggleForm()" class="subscribe-button">Subscribe to the News Letter</button>
+</div>
+  
+<div *ngIf="showForm">
+    <app-subscribe-form (close)="toggleForm()"></app-subscribe-form>
+</div>

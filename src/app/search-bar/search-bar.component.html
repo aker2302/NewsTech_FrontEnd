@@ -1,0 +1,10 @@
+<div class="search-bar">
+  <input type="text" [(ngModel)]="keyword" placeholder="Type a keyword and press Search" (keyup.enter)="addKeyword()">
+  <button (click)="addKeyword()">Search</button>
+</div>
+
+<div class="keywords-container">
+  <span *ngFor="let keyword of keywords; let i = index" class="keyword-badge">
+    {{ keyword }} <button (click)="removeKeyword(i)">x</button>
+  </span>
+</div>

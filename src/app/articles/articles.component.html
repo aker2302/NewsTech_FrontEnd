@@ -1,0 +1,41 @@
+<div class="barSearch">
+  <app-search-bar (searchResults)="handlSearchResults($event)"></app-search-bar>
+</div>
+
+<div class="articles">
+
+  <div *ngIf="isLoading" class="loading-indicator">
+    <span class="loader"></span>
+  </div>
+
+    <div *ngFor="let article of articles" class="article-card" @dropIn>
+      <img [src]="article.image_url" alt="{{ article.title }}" class="article-image" (error)="onImageError($event)"/>
+      <h2 class="article-title">{{ article.title }}</h2>
+      <p class="article-description">
+        {{ getDescriptionPreview(article) }}
+        <span *ngIf="article.description?.length > 100">
+          <button class="show-button" (click)="toggleDescription(article)">
+            {{ article.showFullDescription ? 'Show less' : 'Show more' }}
+          </button>
+      </span>
+      </p>
+      <p class="article-pubdate">{{ article.pubDate }}</p>
+      <div class="article-keywords">
+        <!--<span *ngFor="let keyword of article.keywords | slice:0:10" class="keyword">{{ keyword }}</span>
+        <span *ngIf="article.keywords?.length > 10" class="keyword">+{{ article.keywords?.length - 10 }} more</span>-->
+        <span *ngFor="let keyword of getVisibleKeywords(article)" class="keyword">{{ keyword }}</span>
+        <span *ngIf="article.keywords?.length > maxKeywordsToShow" class="keyword clickable" (click)="toggleKeywords(article)">
+        {{ article.showAllKeywords ? 'Show less' : '+' + (article.keywords.length - maxKeywordsToShow) + ' more' }}
+      </span>
+      </div>
+      <a [href]="article.link" target="_blank" class="read-more">
+        <mat-icon>launch</mat-icon>
+      </a>
+    </div>
+  </div>
+<div class="pagination">
+  <mat-paginator [length]="totalArticles"
+                 [pageSize]="pageSize"
+                 (page)="paginate($event)">
+  </mat-paginator>
+</div>

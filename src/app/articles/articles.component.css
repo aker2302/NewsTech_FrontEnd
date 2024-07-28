@@ -1,0 +1,117 @@
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.pagination{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+  .article-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    border-color: #6200ea;
+    border-width: 2px;
+    width: 300px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .clickable{
+    cursor: pointer;
+  }
+
+  .show-button{
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #6200ea;
+    cursor: pointer;
+  }
+  
+  .article-title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .article-description {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .article-pubdate {
+    color: #aaa;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .article-keywords {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .keyword {
+    background-color:azure;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    color:#6200ea;
+    border-color: #6200ea;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #6200ea;
+    text-decoration: none;
+  }
+
+  .loading-indicator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 0;
+    padding-top: 50%;
+    padding-bottom: 45%;
+  }
+  
+  /* HTML: <div class="loader"></div> */
+.loader {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 25px;
+  display: inline-grid;
+  overflow: hidden;
+  color: #6200ea;
+}
+.loader:before,
+.loader:after {
+  content: "Loading...";
+  grid-area: 1/1;
+  clip-path: inset(0 -200% 50%);
+  text-shadow: -10ch 0 0;
+  animation: l12 1s infinite;
+}
+.loader:after {
+  clip-path: inset(50% -200% 0%);
+  text-shadow: 10ch 0 0;
+  --s:-1;
+}
+@keyframes l12 {50%,100%{transform: translateX(calc(var(--s,1)*100%));}}

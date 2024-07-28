@@ -1,0 +1,17 @@
+<div class="subscribe-form">
+    <div class="close-button-container">
+      <button (click)="closeForm()" class="close-button">X</button>
+    </div>
+    <h2>Subscribe to the News Letter</h2>
+    <form (ngSubmit)="subscribe()">
+      <div>
+        <label for="name">Name:</label>
+        <input placeholder="Your name..." type="text" id="name" [(ngModel)]="name" name="name" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input placeholder="Your email..." type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div>
+      <button type="submit" class="subscribe">Subscribe</button>
+    </form>
+  </div>
