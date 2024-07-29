@@ -36,8 +36,8 @@ export class ArticleService {
   private apiUrlNewsLetter = 'http://localhost:8090/api/v1/public/subscribe';
   private getArticlesApiUrl = 'http://localhost:8090/api/v1/public/getarticles';
 
-  private apiUrlNewsLetterPROD = 'technews-production.up.railway.app/api/v1/public/subscribe';
-  private getArticlesApiUrlPROD = 'technews-production.up.railway.app/api/v1/public/getarticles';
+  private apiUrlNewsLetterPROD = 'https://technews-production.up.railway.app/api/v1/proxy/public/subscribe';
+  private getArticlesApiUrlPROD = 'https://technews-production.up.railway.app/api/v1/proxy/public/getarticles';
 
   constructor(private http: HttpClient) { }
 
