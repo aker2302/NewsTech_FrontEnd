@@ -29,7 +29,6 @@ export class ArticlesComponent implements OnInit{
   errorMessage: string = '';
   isLoading: boolean = false;
 
-  //maxDescriptionLength = 100; // Adjust this value based on your needs
   maxKeywordsToShow = 10;
 
   constructor(private articleService: ArticleService) {}
@@ -51,9 +50,6 @@ export class ArticlesComponent implements OnInit{
     }else{
       this.keywords = [''];// Store the current search keywords
     }
-    console.log(this.keywords, response.keywords);
-    console.log(this.currentPage);
-    console.log(this.totalArticles);
   }
 
   loadArticles(): void {
@@ -63,13 +59,11 @@ export class ArticlesComponent implements OnInit{
       this.articleService.searchArticles(this.keywords, this.pageSize, this.currentPage).subscribe(response => {
         this.isLoading = false;
         this.handlSearchResults(response);
-        console.log("Search this time");
       });
     } else {
       this.articleService.getArticles(this.pageSize,this.currentPage).subscribe(response => {
         this.isLoading = false;
         this.handlSearchResults(response);
-        console.log("Me this time");
       });
     }
   }
@@ -77,7 +71,6 @@ export class ArticlesComponent implements OnInit{
 
   paginate(event: any): void {
     this.currentPage = event.pageIndex;
-    console.log(this.keywords);
     this.loadArticles();
   }
 
@@ -98,22 +91,10 @@ export class ArticlesComponent implements OnInit{
   }
 
   toggleDescription(article: any): void {
-    /*if(!article.showFullDescription){
-      article.showFullDescription = !article.showFullDescription;
-      this.maxDescriptionLength = article.description?.length;
-    } else if(article.showFullDescription){
-      article.showFullDescription = !article.showFullDescription;
-      this.maxDescriptionLength = 100
-    }*/
       article.showFullDescription = !article.showFullDescription;
   }
 
   getDescriptionPreview(article: any): string {
-    /*if(description?.length > this.maxDescriptionLength){
-      return description.slice(0, this.maxDescriptionLength) + (description.length > this.maxDescriptionLength ? '...' : '')
-    } else{
-      return description;
-    }*/
     const maxDescriptionLength = 100; 
     if (!article.description) {
       return '';
